@@ -13,5 +13,8 @@
             "scripts/content.js",
             "utils/removeElement.js"
         ]
-    }]
+    }],
+    "permissions": [
+      "storage"
+    ]
   }
