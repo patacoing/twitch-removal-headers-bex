@@ -4,6 +4,7 @@
     "description": "Extension to remove the headers from twitch's chat",
     "version": "1.0",
     "action": {
+      "default_popup": "popup/popup.html",
       "default_icon": "images/icon.png"
     },
     "content_scripts": [{
