@@ -27,8 +27,7 @@ Just clone the project to your machine, then go to your browser's extensions pag
 
 ## Upcoming Features
 
-- Enable or disable the disappearance of the chat header/gift banner
-- Attempt to remove the redundant layout every X seconds/minutes
+- Enable or disable the disappearance of layouts
 
 ## Contribution
 
