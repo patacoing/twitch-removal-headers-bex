@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Twitch headers removal</title>
     <link rel="stylesheet" href="popup.css"/>
+    <script type="module" src="popup.js"></script>
 </head>
 <body>
     <div class="root">
@@ -25,7 +26,7 @@
         <hr/>
         <div>
             <label for="repeat-every">Repeat every (sec)</label>
-            <input for="repeat-every" type="number" value="5" min="1"/>
+            <input id="repeat-every" type="number" value="5" min="1"/>
         </div>
     </div>
 </body>
