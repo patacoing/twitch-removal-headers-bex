@@ -1,3 +1,6 @@
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/patacoing/twitch-removal-headers-bex/ci.yml)
+
+
 This repository is a browser extension which aims to remove redundant layouts on twitch's chat.
 
 ## Why this BEX ?
