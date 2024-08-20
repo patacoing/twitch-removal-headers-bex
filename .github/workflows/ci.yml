@@ -1,0 +1,20 @@
+name: twitch_removal_headers_bex
+
+on: [pull_request]
+
+permissions:
+  checks: write
+  contents: read
+  pull-requests: read
+
+jobs:
+  code-validation:
+    name: Code Validation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v4
+
+      - name: Run commit message linter
+        uses: wagoid/commitlint-github-action@v6
