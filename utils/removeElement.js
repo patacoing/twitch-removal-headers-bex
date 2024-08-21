@@ -1,13 +1,27 @@
-const removeElement = cssSelector => {
-    const element = document.querySelector(cssSelector);
-    element?.remove();
-};
+class RemoveElementEveryXSeconds {
+    set cssSelectors(newCssSelectors) {
+        this._cssSelectors = newCssSelectors
+    }
 
-const removeElementsEvery5Seconds = cssSelectors => {
-    cssSelectors.forEach(removeElement);
-    setInterval(() => {
-        cssSelectors.forEach(removeElement);
-    }, 5000);
+    set intervalTime(newIntervalTime) {
+        this._intervalTime = newIntervalTime
+    }
+
+    start() {
+        console.log(`start with interval time : ${this._intervalTime}`);
+        this._id = setInterval(() => {
+            this._cssSelectors.forEach(this.#removeElement);
+        }, this._intervalTime);
+    }
+
+    #removeElement(cssSelector) {
+        const element = document.querySelector(cssSelector);
+        element?.remove();
+    }
+
+    stop() {
+        clearInterval(this._id);
+    }
 }
 
-globalThis.removeElementsEvery5Seconds = removeElementsEvery5Seconds;
+globalThis.RemoveElementEveryXSeconds = RemoveElementEveryXSeconds

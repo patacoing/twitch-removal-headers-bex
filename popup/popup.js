@@ -10,4 +10,12 @@ window.onload = async () => {
 
     await initializeData(toggleHideChatHeader, toggleGiftBanner, repeatEveryInput);
     await setListeners(toggleHideChatHeader, toggleGiftBanner, repeatEveryInput);
+
+
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        let activeTab = tabs[0].id;
+    
+        // Send a message to the content script
+        chrome.tabs.sendMessage(activeTab, { action: "hello", data: "Hello from Popup" });
+    });
 }
