@@ -1,3 +1,4 @@
+import { hideChatHeader, hideGiftBanner, repeatEvery } from "../utils/getData.js";
 import {
     initializeData,
     setListeners,
@@ -12,10 +13,19 @@ window.onload = async () => {
     await setListeners(toggleHideChatHeader, toggleGiftBanner, repeatEveryInput);
 
 
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-        let activeTab = tabs[0].id;
+    chrome.tabs.query({ active: true, currentWindow: true }, async (tabs) => {
+        const activeTab = tabs[0].id;
     
-        // Send a message to the content script
-        chrome.tabs.sendMessage(activeTab, { action: "hello", data: "Hello from Popup" });
+        chrome.tabs.sendMessage(
+            activeTab, 
+            { 
+                action: "restart", 
+                data: {
+                    hideChatHeader: await hideChatHeader(),
+                    hideGiftBanner: await hideGiftBanner(),
+                    repeatEvery: await repeatEvery()
+                } 
+            }
+        );
     });
 }
