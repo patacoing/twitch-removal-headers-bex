@@ -1,4 +1,3 @@
-import { hideChatHeader, hideGiftBanner, repeatEvery } from "../utils/getData.js";
 import {
     initializeData,
     setListeners,
@@ -11,21 +10,4 @@ window.onload = async () => {
 
     await initializeData(toggleHideChatHeader, toggleGiftBanner, repeatEveryInput);
     await setListeners(toggleHideChatHeader, toggleGiftBanner, repeatEveryInput);
-
-
-    chrome.tabs.query({ active: true, currentWindow: true }, async (tabs) => {
-        const activeTab = tabs[0].id;
-    
-        chrome.tabs.sendMessage(
-            activeTab, 
-            { 
-                action: "restart", 
-                data: {
-                    hideChatHeader: await hideChatHeader(),
-                    hideGiftBanner: await hideGiftBanner(),
-                    repeatEvery: await repeatEvery()
-                } 
-            }
-        );
-    });
 }
