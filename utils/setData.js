@@ -4,6 +4,10 @@ import {
     repeatEvery
 } from "./getData.js";
 
+import {
+    sendRestartMessage
+} from "./sendMessage.js";
+
 
 const setValue = async (key, value) => await chrome.storage.local.set({[key]: value});
 
@@ -18,9 +22,14 @@ const initializeData = async (toggleHideChatHeader, toggleGiftBanner, repeatEver
 }
 
 const setListeners = async (toggleHideChatHeader, toggleGiftBanner, repeatEveryInput) => {
-    toggleHideChatHeader.onclick = async () => await setHideChatHeader(toggleHideChatHeader.checked);
-    toggleGiftBanner.onclick = async () => await setHideGiftBanner(toggleGiftBanner.checked);
-    repeatEveryInput.onchange = async () => await setRepeatEvery(repeatEveryInput.value);
+    toggleHideChatHeader.onclick = async () => await setDataAndRestart(setHideChatHeader, toggleHideChatHeader.checked);
+    toggleGiftBanner.onclick = async () => await setDataAndRestart(setHideGiftBanner, toggleGiftBanner.checked);
+    repeatEveryInput.onchange = async () => await setDataAndRestart(setRepeatEvery, repeatEveryInput.value);
+}
+
+const setDataAndRestart = async (setValueCallback, value) => {
+    await setValueCallback(value);
+    await sendRestartMessage();
 }
 
 export {
