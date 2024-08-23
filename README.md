@@ -3,6 +3,22 @@
 
 This repository is a browser extension which aims to remove redundant layouts on twitch's chat.
 
+## Usage
+
+![image](https://github.com/user-attachments/assets/2056b3e0-4ce9-4dff-b6ac-817414970816)
+
+By clicking on the extension icon, you access the configuration of the extension.
+You are able to select which data you want to hide. You can finally
+define an interval time when every X seconds, the extension will try to hide the 
+elements you have selected.
+
+Whenever you click either on the extension or when you modify the state of an input, an event
+is sent to reset the preferences.
+
+If data has already been hidden and you switch off to let the data visible, you will have to refresh
+the page to see it (that's because we are deleting the content from the page).
+
+
 ## Why this BEX ?
 
 I've only got one monitor, and when I'm watching a livestream, I like to do other things at the same time.
@@ -30,7 +46,7 @@ Just clone the project to your machine, then go to your browser's extensions pag
 
 ## Upcoming Features
 
-- Enable or disable the disappearance of layouts
+- Multi browser support
 
 ## Contribution
 
