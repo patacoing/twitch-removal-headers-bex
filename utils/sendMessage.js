@@ -4,6 +4,9 @@ import {
     repeatEvery
 } from "./getData.js";
 
+const RESTART_ACTION = "restart";
+const TWITCH_HOST = "twitch.tv";
+
 const sendMessageToCurrentTab = async message => {
     const [{id, url}] = await chrome.tabs.query({ active: true, currentWindow: true });
     
@@ -13,10 +16,10 @@ const sendMessageToCurrentTab = async message => {
     await chrome.tabs.sendMessage(id, message);
 }
 
-const tabUrlContainsTwitch = url => url.includes("twitch.tv");
+const tabUrlContainsTwitch = url => url.includes(TWITCH_HOST);
 
 const sendRestartMessage = async () => await sendMessageToCurrentTab({
-    action: "restart", 
+    action: RESTART_ACTION, 
     data: {
         hideChatHeader: await hideChatHeader(),
         hideGiftBanner: await hideGiftBanner(),

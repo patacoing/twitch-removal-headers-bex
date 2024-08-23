@@ -1,13 +1,14 @@
+const RESTART_ACTION = "restart";
+
 window.addEventListener("load", async () => {    
     const removeElementsEvery5Seconds = new globalThis.RemoveElementEveryXSeconds();
 
     chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {        
-        const { action, data } = message
+        const { action, data: {hideChatHeader, hideGiftBanner, repeatEvery} } = message;
 
-        if (action !== "restart")
+        if (action !== RESTART_ACTION)
             return;
 
-        const { hideChatHeader, hideGiftBanner, repeatEvery } = data;
         const cssSelectors = [];
 
         if (hideChatHeader)
