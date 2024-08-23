@@ -3,6 +3,10 @@ import {
     setListeners,
 } from "../utils/setData.js";
 
+import {
+    sendRestartMessage
+} from "../utils/sendMessage.js";
+
 window.onload = async () => {
     const toggleHideChatHeader = document.querySelector("#toggle-chat-header");
     const toggleGiftBanner = document.querySelector("#toggle-gift-banner");
@@ -10,4 +14,6 @@ window.onload = async () => {
 
     await initializeData(toggleHideChatHeader, toggleGiftBanner, repeatEveryInput);
     await setListeners(toggleHideChatHeader, toggleGiftBanner, repeatEveryInput);
+
+    sendRestartMessage();
 }
