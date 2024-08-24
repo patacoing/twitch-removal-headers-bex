@@ -23,6 +23,11 @@
   "homepage": "https://github.com/patacoing/twitch-removal-headers-bex#readme",
   "devDependencies": {
     "@rollup/plugin-terser": "^0.4.4",
-    "rollup": "^4.21.0"
+    "@rollup/plugin-typescript": "^11.1.6",
+    "rollup": "^4.21.0",
+    "tslib": "^2.7.0"
+  },
+  "dependencies": {
+    "typescript": "^5.5.4"
   }
 }
