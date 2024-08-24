@@ -42,11 +42,29 @@ It's so much better, isn't it?
 
 ## Installation
 
-Just clone the project to your machine, then go to your browser's extensions page, and finally load the project.
+- Clone the project to your machine
+- Run `npm ci --include=dev`
+- Run `npm run build`
+- then go to your browser's extensions page, and finally load the project.
+
+## Developpement
+
+- Clone the projet to your machine
+- Run `npm ci --include=dev`
+- Run `npm run dev`
+
+Whenever you are modifying a file within popup/ or scripts/, the bundled files
+will be recreated.
 
 ## Upcoming Features
 
 - Multi browser support
+- Typescript support
+- Create release
+
+## Build
+
+Same as Installation
 
 ## Contribution
 
