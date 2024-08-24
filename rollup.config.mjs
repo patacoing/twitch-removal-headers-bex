@@ -1,8 +1,9 @@
 import terser from '@rollup/plugin-terser';
+import typescript from '@rollup/plugin-typescript';
 
 export default [
     {
-        input: "popup/popup.js",
+        input: "popup/popup.ts",
         watch: {
             include: 'popup/**',
             clearScreen: false
@@ -12,10 +13,17 @@ export default [
             format: 'iife',
             sourcemap: 'inline',
         },
-        plugins: [terser()]
+        watch: {
+            include: 'scripts/**',
+            clearScreen: false
+        },
+        plugins: [
+            typescript(),
+            terser()
+        ]
     },
     {
-        input: "scripts/content.js",
+        input: "scripts/content.ts",
         output: {
             file: 'build/content.min.js',
             format: 'iife',
@@ -25,6 +33,9 @@ export default [
             include: 'scripts/**',
             clearScreen: false
         },
-        plugins: [terser()]
+        plugins: [
+            typescript(),
+            terser()
+        ]
     },
 ];
