@@ -40,6 +40,16 @@ It's so much better, isn't it?
 
 - Tested on Chromium (Brave) ✔️
 
+
+### Browser API support (from https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Browser_support_for_JavaScript_APIs)
+|                                    | Chome    | Edge     | Firefox  | Opera    | Safari     |
+|------------------------------------|----------|----------|----------|----------|------------|
+| storage get                        |    ✅    | ✅<br>14 | ✅<br>45 | ✅<br>33 |  ✅<br>14  |
+| storage set                        |    ✅    | ✅<br>14 | ✅<br>45 | ✅<br>33 |  ✅<br>14  |
+| query                              |    ✅    | ✅<br>14 | ✅<br>45 |    ✅    |  ✅<br>14  |
+| sendMessage                        |    ✅    | ✅<br>14 | ✅<br>45 |    ✅    |  ✅<br>14  |
+| onMessage -<br>repond with Promise | ✅<br>26 |    ❌    | ✅<br>45 |    ❌    | ✅<br>15.4 |
+
 ## Installation
 
 - Clone the project to your machine
@@ -58,7 +68,8 @@ will be recreated.
 
 ## Upcoming Features
 
-- Multi browser support
+- unit tests
+- tests on different browsers
 - Create release
 
 ## Build
@@ -68,6 +79,7 @@ Same as Installation
 ## Contribution
 
 Feel free to contribute to the project if you have any ideas about features or anything else by submitting a pull request.
+It would be nice if your are using another browser from the ones already tested and you test the extension on it.
 
 ## License
 

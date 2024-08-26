@@ -1,3 +1,5 @@
+import browser from "webextension-polyfill";
+
 interface TabQuery {
     active: boolean,
     currentWindow: boolean
@@ -11,7 +13,7 @@ interface Tab {
 interface IBrowserApiDatapter {
     runtime: {
         onMessage: {
-            addListener: (callback: (message: any) => void) => void
+            addListener: (callback: any) => void
         },
     }
     storage: {
@@ -26,12 +28,12 @@ interface IBrowserApiDatapter {
     }
 }
 
-class ChromeBrowserApiAdapter implements IBrowserApiDatapter {
+class BrowserApiAdapter implements IBrowserApiDatapter {
 
     runtime =  {
         onMessage: { 
-            addListener(callback: (message: any) => void) {
-                chrome.runtime.onMessage.addListener(callback)
+            addListener(callback: any) {
+                browser.runtime.onMessage.addListener(callback)
             }
         }
     }
@@ -39,22 +41,22 @@ class ChromeBrowserApiAdapter implements IBrowserApiDatapter {
     storage = {
         local: {
             async get(key: string) {
-                return await chrome.storage.local.get(key)
+                return await browser.storage.local.get(key) as any
             },
             async set(message: any) {
-                return await chrome.storage.local.set(message)
+                return await browser.storage.local.set(message)
             }
         }
     }
 
     tabs = {
         async sendMessage(tabId: number, message: any) {
-            return await chrome.tabs.sendMessage(tabId, message)
+            return await browser.tabs.sendMessage(tabId, message)
         },
         async query(options: TabQuery) {
-            return await chrome.tabs.query(options) as Tab[]
+            return await browser.tabs.query(options) as Tab[]
         }
     }
 }
 
-export default new ChromeBrowserApiAdapter()
+export default new BrowserApiAdapter()
