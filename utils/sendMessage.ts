@@ -1,9 +1,10 @@
 import { hideChatHeader, hideGiftBanner, repeatEvery } from "./getData";
 import { Message, Actions } from "./types";
 import { TWITCH_HOST } from "./constants";
+import ChomeBrowserApiAdapter from "./browserApiAdapater";
 
 const sendMessageToCurrentTab = async (message: Message) => {
-    const [{id, url}] = await chrome.tabs.query({ active: true, currentWindow: true });
+    const [{id, url}] = await ChomeBrowserApiAdapter.tabs.query({ active: true, currentWindow: true });
     
     if (id === undefined || url == undefined)
         return;
@@ -11,7 +12,7 @@ const sendMessageToCurrentTab = async (message: Message) => {
     if (!tabUrlContainsTwitch(url))
         return;
 
-    await chrome.tabs.sendMessage(id, message);
+    await ChomeBrowserApiAdapter.tabs.sendMessage(id, message);
 }
 
 const tabUrlContainsTwitch = (url: string) => url.includes(TWITCH_HOST);
