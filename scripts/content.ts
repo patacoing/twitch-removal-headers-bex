@@ -1,11 +1,11 @@
 import RemoveElementEveryXSeconds from "../utils/removeElement";
 import { Message, Actions } from "../utils/types";
-import ChromeBrowserApiAdapter from "../utils/browserApiAdapater";
+import BrowserApiAdapter from "../utils/browserApiAdapater";
 
 window.addEventListener("load", async () => {    
     const removeElementsEvery5Seconds = new RemoveElementEveryXSeconds();
 
-    ChromeBrowserApiAdapter.runtime.onMessage.addListener((message: Message) => {        
+    BrowserApiAdapter.runtime.onMessage.addListener((message: Message) => {        
         const { action, data: {hideChatHeader, hideGiftBanner, repeatEvery} } = message;
 
         if (action !== Actions.RESTART)

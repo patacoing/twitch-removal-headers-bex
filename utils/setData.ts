@@ -1,4 +1,4 @@
-import ChromeBrowserApiAdapter from "./browserApiAdapater";
+import BrowserApiAdapter from "./browserApiAdapater";
 
 import {
     hideChatHeader,
@@ -14,7 +14,7 @@ interface CallbackOneParam<T1, T2 = void> {
     (value: T1): T2;
   }
 
-const setValue = async (key: string, value: boolean | number) => await ChromeBrowserApiAdapter.storage.local.set({[key]: value});
+const setValue = async (key: string, value: boolean | number) => await BrowserApiAdapter.storage.local.set({[key]: value});
 
 const setHideChatHeader = async (value: boolean) => await setValue("hideChatHeader", value);
 const setHideGiftBanner = async (value: boolean) => await setValue("hideGiftBanner", value);
@@ -23,7 +23,7 @@ const setRepeatEvery = async (value: number) => await setValue("repeatEvery", va
 const initializeData = async (toggleHideChatHeader: HTMLInputElement, toggleGiftBanner: HTMLInputElement, repeatEveryInput: HTMLInputElement) => {
     toggleHideChatHeader.checked = await hideChatHeader();
     toggleGiftBanner.checked = await hideGiftBanner();
-    repeatEveryInput.value = await repeatEvery()
+    repeatEveryInput.value = (await repeatEvery()).toString();
 }
 
 const setListeners = async (toggleHideChatHeader: HTMLInputElement, toggleGiftBanner: HTMLInputElement, repeatEveryInput: HTMLInputElement) => {

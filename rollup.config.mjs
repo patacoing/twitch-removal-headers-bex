@@ -1,5 +1,23 @@
 import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import polyfillNode from 'rollup-plugin-polyfill-node';
+
+const plugins = [
+    resolve({
+        browser: true,
+        preferBuiltins: false
+    }),
+    commonjs(),
+    polyfillNode(),
+    typescript(),
+    terser()
+];
+
+const globals = {
+    "webextension-polyfill": "browser",    
+}
 
 export default [
     {
@@ -12,15 +30,13 @@ export default [
             file: 'build/popup.min.js',
             format: 'iife',
             sourcemap: 'inline',
+            globals,
         },
         watch: {
             include: 'popup/**',
             clearScreen: false
         },
-        plugins: [
-            typescript(),
-            terser()
-        ],
+        plugins,
     },
     {
         input: "scripts/content.ts",
@@ -28,14 +44,12 @@ export default [
             file: 'build/content.min.js',
             format: 'iife',
             sourcemap: 'inline',
+            globals,
         },
         watch: {
             include: 'scripts/**',
             clearScreen: false
         },
-        plugins: [
-            typescript(),
-            terser()
-        ],
+        plugins,
     },
 ];
