@@ -1,3 +1,5 @@
+import ChromeBrowserApiAdapter from "./browserApiAdapater";
+
 import {
     hideChatHeader,
     hideGiftBanner,
@@ -12,7 +14,7 @@ interface CallbackOneParam<T1, T2 = void> {
     (value: T1): T2;
   }
 
-const setValue = async (key: string, value: boolean | number) => await chrome.storage.local.set({[key]: value});
+const setValue = async (key: string, value: boolean | number) => await ChromeBrowserApiAdapter.storage.local.set({[key]: value});
 
 const setHideChatHeader = async (value: boolean) => await setValue("hideChatHeader", value);
 const setHideGiftBanner = async (value: boolean) => await setValue("hideGiftBanner", value);
