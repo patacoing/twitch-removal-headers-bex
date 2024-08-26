@@ -42,13 +42,13 @@ It's so much better, isn't it?
 
 
 ### Browser API support (from https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Browser_support_for_JavaScript_APIs)
-|                                    | Chome    | Edge     | Firefox  | Opera    | Safari     |
-|------------------------------------|----------|----------|----------|----------|------------|
-| storage get                        |    ✅    | ✅<br>14 | ✅<br>45 | ✅<br>33 |  ✅<br>14  |
-| storage set                        |    ✅    | ✅<br>14 | ✅<br>45 | ✅<br>33 |  ✅<br>14  |
-| query                              |    ✅    | ✅<br>14 | ✅<br>45 |    ✅    |  ✅<br>14  |
-| sendMessage                        |    ✅    | ✅<br>14 | ✅<br>45 |    ✅    |  ✅<br>14  |
-| onMessage -<br>repond with Promise | ✅<br>26 |    ❌    | ✅<br>45 |    ❌    | ✅<br>15.4 |
+|             | Chome   | Edge    | Firefox | Opera   | Safari    |
+|-------------|---------|---------|---------|---------|-----------|
+| storage get |    ✅    | ✅<br>14 | ✅<br>45 | ✅<br>33 |  ✅<br>14  |
+| storage set |    ✅    | ✅<br>14 | ✅<br>45 | ✅<br>33 |  ✅<br>14  |
+| query       |    ✅    | ✅<br>14 | ✅<br>45 |    ✅    |  ✅<br>14  |
+| sendMessage |    ✅    | ✅<br>14 | ✅<br>45 |    ✅    |  ✅<br>14  |
+| onMessage   | ✅<br>26 | ✅<br>79 | ✅<br>45 | ✅<br>15 | ✅<br>14   |
 
 ## Installation
 
