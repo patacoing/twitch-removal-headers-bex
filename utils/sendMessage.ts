@@ -1,25 +1,23 @@
-import {
-    hideChatHeader,
-    hideGiftBanner,
-    repeatEvery
-} from "./getData.js";
+import { hideChatHeader, hideGiftBanner, repeatEvery } from "./getData";
+import { Message, Actions } from "./types";
+import { TWITCH_HOST } from "./constants";
 
-const RESTART_ACTION = "restart";
-const TWITCH_HOST = "twitch.tv";
-
-const sendMessageToCurrentTab = async message => {
+const sendMessageToCurrentTab = async (message: Message) => {
     const [{id, url}] = await chrome.tabs.query({ active: true, currentWindow: true });
     
+    if (id === undefined || url == undefined)
+        return;
+
     if (!tabUrlContainsTwitch(url))
         return;
 
     await chrome.tabs.sendMessage(id, message);
 }
 
-const tabUrlContainsTwitch = url => url.includes(TWITCH_HOST);
+const tabUrlContainsTwitch = (url: string) => url.includes(TWITCH_HOST);
 
 const sendRestartMessage = async () => await sendMessageToCurrentTab({
-    action: RESTART_ACTION, 
+    action: Actions.RESTART, 
     data: {
         hideChatHeader: await hideChatHeader(),
         hideGiftBanner: await hideGiftBanner(),

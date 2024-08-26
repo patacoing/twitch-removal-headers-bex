@@ -1,14 +1,18 @@
 {
   "compilerOptions": {
-    "target": "es2016",
+    "target": "es2017",
     "module": "esnext",
     "inlineSourceMap": true,
     "outDir": "dist/",
     "importHelpers": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    "noEmitHelpers": false,
     "strict": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "paths": {
+      "tslib" : ["./node_modules/tslib/tslib.d.ts"]
+    }
   },
   "include": ["popup/*", "scripts/*", "utils/*"],
   "exclude": ["node_modules", "build"]

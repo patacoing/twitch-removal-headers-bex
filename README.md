@@ -59,7 +59,6 @@ will be recreated.
 ## Upcoming Features
 
 - Multi browser support
-- Typescript support
 - Create release
 
 ## Build
