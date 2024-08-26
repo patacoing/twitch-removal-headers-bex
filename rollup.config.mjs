@@ -14,13 +14,13 @@ export default [
             sourcemap: 'inline',
         },
         watch: {
-            include: 'scripts/**',
+            include: 'popup/**',
             clearScreen: false
         },
         plugins: [
             typescript(),
             terser()
-        ]
+        ],
     },
     {
         input: "scripts/content.ts",
@@ -36,6 +36,6 @@ export default [
         plugins: [
             typescript(),
             terser()
-        ]
+        ],
     },
 ];

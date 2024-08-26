@@ -1,9 +1,13 @@
 class RemoveElementEveryXSeconds {
-    set cssSelectors(newCssSelectors) {
+    _cssSelectors: string[] = [];
+    _intervalTime: number = 5;
+    _id: number | undefined = undefined;
+
+    set cssSelectors(newCssSelectors: string[]) {
         this._cssSelectors = newCssSelectors
     }
 
-    set intervalTime(newIntervalTime) {
+    set intervalTime(newIntervalTime: number) {
         this._intervalTime = newIntervalTime
     }
 
@@ -14,7 +18,7 @@ class RemoveElementEveryXSeconds {
         }, this._intervalTime);
     }
 
-    #removeElement(cssSelector) {
+    #removeElement(cssSelector: string) {
         const element = document.querySelector(cssSelector);
         element?.remove();
     }
@@ -24,4 +28,4 @@ class RemoveElementEveryXSeconds {
     }
 }
 
-globalThis.RemoveElementEveryXSeconds = RemoveElementEveryXSeconds
+export default RemoveElementEveryXSeconds;
